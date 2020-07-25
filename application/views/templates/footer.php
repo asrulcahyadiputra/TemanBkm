@@ -323,7 +323,7 @@
 
 			} else {
 				swal({
-					title: "Data Imajiner Anda Aman ! ",
+					title: "Data Anggota Anda Aman ! ",
 					text: "Tidak Dilakukan Perubahan Apapun",
 					type: 'info',
 					icon: 'info',

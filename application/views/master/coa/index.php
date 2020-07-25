@@ -12,7 +12,7 @@
 					<i class="flaticon-right-arrow"></i>
 				</li>
 				<li class="nav-item">
-					<a href="#">Master Data</a>
+					<a href="#">Akuntansi</a>
 				</li>
 				<li class="separator">
 					<i class="flaticon-right-arrow"></i>
