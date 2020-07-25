@@ -17,7 +17,8 @@ class Master_jabatan extends CI_Controller
 		$data = [
 			'title'		=> "TemanBKM",
 			'level'		=> 1,
-			'jabatan'		=> $this->M_jabatan->get_jabatan()
+			'jabatan'		=> $this->M_jabatan->get_jabatan(),
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/jabatan/index');
@@ -29,6 +30,7 @@ class Master_jabatan extends CI_Controller
 			'title'		=> "TemanBKM",
 			'id_jabatan'	=> $this->M_jabatan->id_invoice(),
 			'level'		=> 1,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/jabatan/add');
@@ -40,6 +42,7 @@ class Master_jabatan extends CI_Controller
 			'title'		=> "TemanBKM",
 			'jabatan'		=> $this->M_jabatan->select_jabatan($id),
 			'level'		=> 1,
+			'menu'		=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/jabatan/edit');

@@ -17,7 +17,8 @@ class Simpanan extends CI_Controller
 		$data = [
 			'title'		=> "TemanBKM",
 			'simpanan'	=> $this->M_simpanan->get_simpanan(),
-			'level'		=> 1
+			'level'		=> 1,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('simpanan/index');

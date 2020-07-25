@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller
 		$data = [
 			'title'	=> "TemanBKM",
 			'level'	=> 0,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/dashboard');

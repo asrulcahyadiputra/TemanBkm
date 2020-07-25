@@ -16,7 +16,8 @@ class Profile extends CI_Controller
 		$data = [
 			'title'	=> "TemanBKM",
 			'bkm'	=> $this->M_profile->get_profile(),
-			'level'	=> 0
+			'level'	=> 0,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/profile/index');

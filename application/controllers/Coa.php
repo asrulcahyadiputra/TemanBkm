@@ -19,7 +19,8 @@ class Coa extends CI_Controller
 			'header'	=> $this->M_coa->get_header(),
 			'sub'	=> $this->M_coa->get_sub_header_all(),
 			'coa'	=> $this->M_coa->get_coa(),
-			'level'	=> 0
+			'level'	=> 0,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/coa/index');
@@ -83,7 +84,8 @@ class Coa extends CI_Controller
 			$data = [
 				'title'	=> "TemanBKM",
 				'coa'	=> $this->M_coa->get_coa(),
-				'level'	=> 0
+				'level'	=> 0,
+				'menu'	=> $this->M_menu->get_menu()
 			];
 			$this->load->view('templates/header', $data);
 			$this->load->view('master/coa/add_coa');
@@ -137,7 +139,8 @@ class Coa extends CI_Controller
 				'title'	=> "TemanBKM",
 				'coa'	=> $this->M_coa->get_coa(),
 				'e'		=> $this->M_coa->select_coa($id),
-				'level'	=> 0
+				'level'	=> 0,
+				'menu'	=> $this->M_menu->get_menu()
 			];
 			$this->load->view('templates/header', $data);
 			$this->load->view('master/coa/edit_coa');

@@ -17,7 +17,8 @@ class Produk_simpanan extends CI_Controller
 		$data = [
 			'title'		=> "TemanBKM",
 			'produk'		=> $this->M_produk->get_produk(),
-			'level'		=> 1
+			'level'		=> 1,
+			'menu'		=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/produk/simpanan/index');
@@ -90,7 +91,8 @@ class Produk_simpanan extends CI_Controller
 			$data = [
 				'title'		=> "TemanBKM",
 				'kode'		=> $this->M_produk->id_produk_simpanan(),
-				'level'		=> 0
+				'level'		=> 0,
+				'menu'		=> $this->M_menu->get_menu()
 
 			];
 			$this->load->view('templates/header', $data);

@@ -20,6 +20,7 @@ class Anggota extends CI_Controller
 			'anggota_tetap'		=> $this->M_anggota->get_anggota_aktif(), //status 1
 			'anggota_calon'		=> $this->M_anggota->get_anggota_calon(), // status 0
 			'anggota_blokir'		=> $this->M_anggota->get_anggota_blokir(), // status 2
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/anggota/index');

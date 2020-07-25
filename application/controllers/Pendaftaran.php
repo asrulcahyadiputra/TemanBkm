@@ -18,7 +18,8 @@ class Pendaftaran extends CI_Controller
 		$data = [
 			'title'		=> "TemanBKM",
 			'id_anggota'	=> $this->M_anggota->id_anggota(),
-			'level'		=> 1
+			'level'		=> 1,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi/pendaftaran/index');
@@ -93,7 +94,8 @@ class Pendaftaran extends CI_Controller
 			'anggota'		=> $this->M_pendaftaran->select_anggota($id),
 			'simpanan'	=> $this->M_pendaftaran->get_jenis_simpanan(),
 			'komponen'	=> $this->M_pendaftaran->get_komponen_biaya(),
-			'level'		=> 1
+			'level'		=> 1,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi/pendaftaran/pembayaran');

@@ -18,7 +18,8 @@ class Master_pengurus extends CI_Controller
 		$data = [
 			'title'		=> "TemanBKM",
 			'level'		=> 1,
-			'pengurus'	=> $this->M_pengurus->get_pengurus()
+			'pengurus'	=> $this->M_pengurus->get_pengurus(),
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/pengurus/index');
@@ -31,6 +32,7 @@ class Master_pengurus extends CI_Controller
 			'level'		=> 1,
 			'id_pengurus'	=> $this->M_pengurus->id_pengurus(),
 			'jabatan'		=> $this->M_jabatan->get_jabatan(),
+			'menu'	=> $this->M_menu->get_menu()
 
 		];
 		$this->load->view('templates/header', $data);
@@ -44,6 +46,7 @@ class Master_pengurus extends CI_Controller
 			'level'		=> 1,
 			'pengurus'	=> $this->M_pengurus->select_pengurus($id),
 			'jabatan'		=> $this->M_jabatan->get_jabatan(),
+			'menu'	=> $this->M_menu->get_menu()
 
 		];
 		// echo "<pre>";

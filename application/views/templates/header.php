@@ -221,211 +221,41 @@
 						</div>
 					</div>
 					<ul class="nav nav-primary">
-						<li class="nav-item <?= $this->uri->segment(1) == 'Dashboard'  ? 'active' : '' ?>">
-							<a href="<?= site_url('Dashboard') ?>" class="collapsed">
-								<i class="fas fa-home"></i>
-								<p>Dashboard</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?= site_url('Profile') ?>">
-								<i class="fas fa-address-card"></i>
-								<p>Profil BKM</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#base">
-								<i class="fas fa-layer-group"></i>
-								<p>Data Master</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="base">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="<?= site_url('Master_jabatan') ?>">
-											<span class="sub-item">Jabatan</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('Master_pengurus') ?>">
-											<span class="sub-item">Pengurus</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('User') ?>">
-											<span class="sub-item">Users</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#simpanan">
-								<i class="fas fa-book"></i>
-								<p>Simpanan</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="simpanan">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="<?= site_url('Simpanan') ?>">
-											<span class="sub-item">Simpanan</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('Jenis_simpanan') ?>">
-											<span class="sub-item">Jenis Simpanan</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#anggota">
-								<i class="fas fa-users"></i>
-								<p>Anggota</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="anggota">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="<?= site_url('Pendaftaran') ?>">
-											<span class="sub-item">Pendaftaran</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('Anggota') ?>">
-											<span class="sub-item">Anggota</span>
-										</a>
-									</li>
-									<li>
-										<a href="">
-											<span class="sub-item">Undian</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#rekening">
-								<i class="fas fa-money-check"></i>
-								<p>Rekening</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="rekening">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="<?= site_url('Rekening') ?>">
-											<span class="sub-item">Rekening Nasabah</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('Rekening/generate') ?>">
-											<span class="sub-item">Generate Bunga</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('Penyetoran') ?>">
-											<span class="sub-item">Penyetoran</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('Penarikan') ?>">
-											<span class="sub-item">Penarikan</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('Produk_simpanan') ?>">
-											<span class="sub-item">Jenis Tabungan</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
+						<?php foreach ($menu as $m) : ?>
+							<?php if ($m->level == 0) : ?>
+								<li class="nav-item">
+									<a href="<?= site_url($m->url) ?>" class="collapsed">
+										<i class="<?= $m->icon ?>"></i>
+										<p><?= $m->nama_menu ?></p>
+									</a>
+								</li>
+							<?php endif ?>
+						<?php endforeach ?>
 
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#kas">
-								<i class="fas fa-coins"></i>
-								<p>Keuangan</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="kas">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="">
-											<span class="sub-item">Kas Masuk</span>
-										</a>
-									</li>
-									<li>
-										<a href="">
-											<span class="sub-item">Kas Keluar</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('Invoice') ?>">
-											<span class="sub-item">Genearate Invoice</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#aset">
-								<i class="fas fa-boxes"></i>
-								<p>Manajemen Aset</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="aset">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="">
-											<span class="sub-item">Pengadaan</span>
-										</a>
-									</li>
-									<li>
-										<a href="">
-											<span class="sub-item">Daftar Aset</span>
-										</a>
-									</li>
-									<li>
-										<a href="">
-											<span class="sub-item">Jenis Aset</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#akuntansi">
-								<i class="fas fa-file-invoice-dollar"></i>
-								<p>Akuntansi</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="akuntansi">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="<?= site_url('Jurnal') ?>">
-											<span class="sub-item">Jurnal Umum</span>
-										</a>
-									</li>
-									<li>
-										<a href="">
-											<span class="sub-item">Buku Besar</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('Coa') ?>">
-											<span class="sub-item">Charts Of Account</span>
-										</a>
-									</li>
-									<li>
-										<a href="<?= site_url('Komponen_biaya') ?>">
-											<span class="sub-item">Komponen Biaya</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
+						<?php foreach ($menu as $sm) : ?>
+							<?php if ($sm->level == 1) : ?>
+								<li class="nav-item">
+									<a data-toggle="collapse" href="#<?= $sm->url ?>">
+										<i class="<?= $sm->icon ?>"></i>
+										<p><?= $sm->nama_menu ?></p>
+										<span class="caret"></span>
+									</a>
+									<div class="collapse" id="<?= $sm->url ?>">
+										<ul class="nav nav-collapse">
+											<?php foreach ($menu as $ssm) : ?>
+												<?php if ($ssm->level == 2 && $ssm->parent == $sm->urut) : ?>
+													<li>
+														<a href="<?= site_url($ssm->url) ?>">
+															<span class="sub-item"><?= $ssm->nama_menu ?></span>
+														</a>
+													</li>
+												<?php endif ?>
+											<?php endforeach ?>
+										</ul>
+									</div>
+								</li>
+							<?php endif ?>
+						<?php endforeach ?>
 					</ul>
 				</div>
 			</div>

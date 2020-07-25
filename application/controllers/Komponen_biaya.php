@@ -17,7 +17,8 @@ class Komponen_biaya extends CI_Controller
 		$data = [
 			'title'	=> "TemanBKM",
 			'kode'	=> $this->M_komponen->id_komponen(),
-			'komponen' => $this->M_komponen->get_komponen()
+			'komponen' => $this->M_komponen->get_komponen(),
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/komponen_biaya/index');
@@ -33,7 +34,8 @@ class Komponen_biaya extends CI_Controller
 	{
 		$data = [
 			'title'	=> "TemanBKM",
-			'komponen' => $this->M_komponen->select_komponen($id)
+			'komponen' => $this->M_komponen->select_komponen($id),
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/komponen_biaya/edit_komponen');

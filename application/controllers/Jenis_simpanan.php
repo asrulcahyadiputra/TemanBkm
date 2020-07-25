@@ -18,7 +18,8 @@ class Jenis_simpanan extends CI_Controller
 			'title'	=> "TemanBKM",
 			'jenis'	=> $this->M_simpanan->get_jenis(),
 			'kode'	=> $this->M_simpanan->id_jenis(),
-			'level'		=> 0
+			'level'		=> 0,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/simpanan/index');
@@ -35,7 +36,8 @@ class Jenis_simpanan extends CI_Controller
 		$data = [
 			'title'	=> "TemanBKM",
 			'jenis'	=> $this->M_simpanan->select_jenis($id),
-			'level'		=> 0
+			'level'		=> 0,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/simpanan/edit_jenis');

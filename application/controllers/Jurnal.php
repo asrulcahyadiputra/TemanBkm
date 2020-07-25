@@ -19,7 +19,8 @@ class Jurnal extends CI_Controller
 			'bkm' 	=> $this->M_laporan->get_profile(),
 			'jurnal'	=> $this->M_laporan->get_jurnal(),
 			'row'	=> $this->M_laporan->get_row(),
-			'level'	=> 1
+			'level'	=> 1,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('laporan/akuntansi/jurnal');

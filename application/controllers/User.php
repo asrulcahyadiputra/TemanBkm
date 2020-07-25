@@ -17,7 +17,8 @@ class User extends CI_Controller
 		$data = [
 			'title'		=> 'TemanBKM',
 			'level'		=> 0,
-			'user'		=> $this->M_user->get_user()
+			'user'		=> $this->M_user->get_user(),
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('master/user/index');
@@ -33,6 +34,7 @@ class User extends CI_Controller
 	{
 		$data = [
 			'status'		=> $status
+
 		];
 		$this->db->where('id_user', $id);
 		$this->db->update('user', $data);

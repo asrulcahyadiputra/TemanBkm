@@ -17,7 +17,8 @@ class Invoice extends CI_Controller
 			'title'		=> "TemanBKM",
 			'level'		=> 0,
 			'id_periode'	=> $this->M_invoice->id_periode(),
-			'periode'		=> $this->M_invoice->get_periode()
+			'periode'		=> $this->M_invoice->get_periode(),
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi/invoice/index');
@@ -42,7 +43,7 @@ class Invoice extends CI_Controller
 			'title'		=> "TemanBKM",
 			'id'			=> $id,
 			'level'		=> 1,
-
+			'menu'	=> $this->M_menu->get_menu(),
 			'periode'		=> $this->M_invoice->select_periode($id),
 			'd_periode'	=> $this->M_invoice->select_detail_periode($id),
 			'anggota'		=> $this->M_invoice->get_anggota(),
@@ -67,7 +68,8 @@ class Invoice extends CI_Controller
 			'detail'		=> $this->M_invoice->one_detail_periode($id),
 			'invoice'		=> $this->M_invoice->one_invoice($id),
 			'wajib'		=> $this->M_invoice->get_jenis_simpanan(),
-			'tunggakan'	=> $this->M_invoice->get_tunggakan($anggota, $id)
+			'tunggakan'	=> $this->M_invoice->get_tunggakan($anggota, $id),
+			'menu'	=> $this->M_menu->get_menu()
 
 		];
 		// echo "<pre>";

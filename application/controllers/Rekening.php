@@ -16,7 +16,8 @@ class Rekening extends CI_Controller
 		$data = [
 			'title'		=> 'TemanBKM',
 			'rekening'	=> $this->M_rekening->get_rekening(),
-			'level'		=> 1
+			'level'		=> 1,
+			'menu'		=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi/rekening/index');
@@ -29,7 +30,8 @@ class Rekening extends CI_Controller
 			'rek'		=> $this->M_rekening->select_rekening($no_rek),
 			'detail'		=> $this->M_rekening->select_detail_rekening($no_rek),
 			'sl'			=> $this->M_rekening->select_saldo($no_rek),
-			'level'		=> 1
+			'level'		=> 1,
+			'menu'		=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi/rekening/detail');
@@ -43,7 +45,8 @@ class Rekening extends CI_Controller
 				'title'	=> 'TemanBKM',
 				'anggota'	=> $this->M_anggota->get_anggota_aktif(),
 				'status'	=> 0,
-				'level'	=> 0
+				'level'	=> 0,
+				'menu'	=> $this->M_menu->get_menu()
 			];
 			$this->load->view('templates/header', $data);
 			$this->load->view('transaksi/rekening/add');
@@ -56,7 +59,8 @@ class Rekening extends CI_Controller
 				'status'	=> 1,
 				'ag'		=> $this->M_anggota->select_anggota_aktif($id),
 				'jenis'	=> $this->M_rekening->get_jenis_produk(),
-				'level'		=> 1
+				'level'		=> 1,
+				'menu'	=> $this->M_menu->get_menu()
 			];
 			$this->load->view('templates/header', $data);
 			$this->load->view('transaksi/rekening/add');
@@ -78,7 +82,8 @@ class Rekening extends CI_Controller
 		$data = [
 			'title'		=> 'TemanBKM',
 			'periode'		=> $this->M_rekening->get_periode_generate_bunga(),
-			'level'		=> 0
+			'level'		=> 0,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi/rekening/bunga');
@@ -113,7 +118,8 @@ class Rekening extends CI_Controller
 			'id'			=> $id,
 			'rekening'	=> $this->M_rekening->search_rekening(),
 			'listing'		=> $this->M_rekening->search_rekening_for_list(),
-			'level'		=> 0
+			'level'		=> 0,
+			'menu'	=> $this->M_menu->get_menu()
 
 		];
 		$this->load->view('templates/header', $data);
@@ -133,7 +139,8 @@ class Rekening extends CI_Controller
 			'hari'		=> $day,
 			'id'			=> $id,
 			'rekening'	=> $this->M_rekening->saldo_rekening($id, $periode),
-			'level'		=> 1
+			'level'		=> 1,
+			'menu'	=> $this->M_menu->get_menu()
 
 		];
 		$this->load->view('templates/header', $data);

@@ -19,7 +19,8 @@ class Penyetoran extends CI_Controller
 		$data = [
 			'title'		=> 'TemanBKM',
 			'anggota'		=> $this->M_anggota->get_anggota_aktif(),
-			'level'		=> 1
+			'level'		=> 1,
+			'menu'	=> $this->M_menu->get_menu()
 		];
 		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi/penyetoran/index');
