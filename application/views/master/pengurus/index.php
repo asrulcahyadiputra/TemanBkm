@@ -65,7 +65,7 @@
 															<td><?= nominal($j->thr) ?></td>
 															<td><?= nominal($j->tunjangan_lain) ?></td>
 															<td>
-																<a href="" class="text-warning" data-toggle="tooltip" data-placement="top" title="Edit Jabatan"><i class="fa fa-edit"></i></a>
+																<a href="<?= site_url('Master_jabatan/update/' . $j->id_jabatan) ?>" class="text-warning" data-toggle="tooltip" data-placement="top" title="Edit Jabatan"><i class="fa fa-edit"></i></a>
 															</td>
 														</tr>
 													<?php endforeach ?>

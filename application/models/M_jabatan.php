@@ -28,6 +28,10 @@ class M_jabatan extends CI_Model
 	{
 		return $this->db->get('master_jabatan')->result();
 	}
+	public function select_jabatan($id)
+	{
+		return $this->db->get_where('master_jabatan', ['id_jabatan' => $id])->row_array();
+	}
 	public function store()
 	{
 		$id 				= $this->input->post('id_jabatan');
@@ -44,6 +48,25 @@ class M_jabatan extends CI_Model
 			'tunjangan_lain'	=> $tunjangan_lain
 		];
 		return $this->db->insert('master_jabatan', $data);
+	}
+	public function update()
+	{
+		$id 				= $this->input->post('id_jabatan');
+		$jabatan 		 	= $this->input->post('jabatan');
+		$pokok 			= intval(preg_replace("/[^0-9]/", "", $this->input->post('gaji_pokok')));
+		$thr 			= intval(preg_replace("/[^0-9]/", "", $this->input->post('thr')));
+		$tunjangan_lain 	= intval(preg_replace("/[^0-9]/", "", $this->input->post('tunjangan_lain')));
+
+		$data = [
+
+			'jabatan'			=> $jabatan,
+			'gaji_pokok'		=> $pokok,
+			'thr'			=> $thr,
+			'tunjangan_lain'	=> $tunjangan_lain
+		];
+		$this->db->where('id_jabatan', $id);
+
+		return $this->db->update('master_jabatan', $data);
 	}
 }
 
