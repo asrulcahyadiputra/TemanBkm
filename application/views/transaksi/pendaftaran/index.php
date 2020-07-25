@@ -53,7 +53,7 @@
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="">NIK</label>
-														<input type="text" name="nik" id="" class="form-control  <?= form_error('nik') != '' ? 'is-invalid' : '' ?>">
+														<input type="text" name="nik" id="" class="form-control nik  <?= form_error('nik') != '' ? 'is-invalid' : '' ?>">
 														<div class="invalid-feedback">
 															<?= form_error('nik') ?>
 														</div>
@@ -108,7 +108,7 @@
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="">No Telepon / Hp</label>
-														<input type="text" name="no_telp" id="" class="form-control <?= form_error('no_telp') != '' ? 'is-invalid' : '' ?>">
+														<input type="text" name="no_telp" id="" class="form-control no_hp <?= form_error('no_telp') != '' ? 'is-invalid' : '' ?>">
 														<div class="invalid-feedback">
 															<?= form_error('no_telp') ?>
 														</div>

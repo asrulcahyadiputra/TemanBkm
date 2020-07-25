@@ -21,9 +21,19 @@ class M_pendaftaran extends CI_Model
 			'no_telp'				=> $this->input->post('no_telp'),
 			'email'				=> $this->input->post('email'),
 		];
+		$user = [
+			'id_anggota'			=> $this->input->post('id_anggota'),
+			'nama'				=> $this->input->post('nama_anggota'),
+			'username'			=> $this->input->post('nik'),
+			'password'			=> password_hash('123456', PASSWORD_DEFAULT),
+			'role'				=> 6,
+			'foto'				=> "default-user.png"
+
+		];
 		$this->db->trans_start();
 		$this->db->insert('anggota', $anggota);
 		$this->db->insert('pendaftaran', $pendaftaran);
+		$this->db->insert('user', $user);
 		$this->db->trans_complete();
 	}
 	public function select_anggota($id)
