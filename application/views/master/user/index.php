@@ -63,6 +63,8 @@
 																<?php
 																if ($u->role == 1) {
 																	echo "Super Admin";
+																} elseif ($u->role == 0) {
+																	echo "Ketua BKM";
 																} elseif ($u->role == 2) {
 																	echo "Admin";
 																}
@@ -81,7 +83,12 @@
 																?>
 															</td>
 															<td>
-																<a href="" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Lock User"><i class="fa fa-lock"></i></a>
+																<?php if ($u->status == 1) : ?>
+																	<a href="<?= site_url('User/block/' . $u->id_user . '/0') ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Lock User"><i class="fa fa-lock"></i></a>
+																<?php endif ?>
+																<?php if ($u->status == 0) : ?>
+																	<a href="<?= site_url('User/block/' . $u->id_user . '/1') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Lock User"><i class="fa fa-lock"></i></a>
+																<?php endif ?>
 															</td>
 														</tr>
 													<?php endforeach ?>

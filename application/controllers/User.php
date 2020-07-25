@@ -29,6 +29,16 @@ class User extends CI_Controller
 		$this->session->set_flashdata('sukses', 'User Berhasil di Tambahkan');
 		redirect('User');
 	}
+	public function block($id, $status)
+	{
+		$data = [
+			'status'		=> $status
+		];
+		$this->db->where('id_user', $id);
+		$this->db->update('user', $data);
+		$this->session->set_flashdata('sukses', 'Status User Berhasil di Perbaharui');
+		redirect('User');
+	}
 }
 
 /* End of file User.php */
