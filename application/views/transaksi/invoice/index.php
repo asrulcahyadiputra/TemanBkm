@@ -48,7 +48,6 @@
 														<th>Kode Periode</th>
 														<th>Periode Tagihan</th>
 														<th>Total Hari</th>
-														<th>Status</th>
 														<th>Aksi</th>
 													</tr>
 												</thead>
