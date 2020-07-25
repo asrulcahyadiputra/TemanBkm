@@ -247,7 +247,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="">
+										<a href="<?= site_url('Master_pengurus') ?>">
 											<span class="sub-item">Pengurus</span>
 										</a>
 									</li>

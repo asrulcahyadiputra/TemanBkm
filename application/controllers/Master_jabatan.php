@@ -20,7 +20,7 @@ class Master_jabatan extends CI_Controller
 			'jabatan'		=> $this->M_jabatan->get_jabatan()
 		];
 		$this->load->view('templates/header', $data);
-		$this->load->view('master/pengurus/index');
+		$this->load->view('master/jabatan/index');
 		$this->load->view('templates/footer');
 	}
 	public function insert()
@@ -31,7 +31,7 @@ class Master_jabatan extends CI_Controller
 			'level'		=> 1,
 		];
 		$this->load->view('templates/header', $data);
-		$this->load->view('master/pengurus/add');
+		$this->load->view('master/jabatan/add');
 		$this->load->view('templates/footer');
 	}
 	public function update($id)
@@ -42,7 +42,7 @@ class Master_jabatan extends CI_Controller
 			'level'		=> 1,
 		];
 		$this->load->view('templates/header', $data);
-		$this->load->view('master/pengurus/edit');
+		$this->load->view('master/jabatan/edit');
 		$this->load->view('templates/footer');
 	}
 	public function store()
