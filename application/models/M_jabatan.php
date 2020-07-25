@@ -58,7 +58,6 @@ class M_jabatan extends CI_Model
 		$tunjangan_lain 	= intval(preg_replace("/[^0-9]/", "", $this->input->post('tunjangan_lain')));
 
 		$data = [
-
 			'jabatan'			=> $jabatan,
 			'gaji_pokok'		=> $pokok,
 			'thr'			=> $thr,
