@@ -73,6 +73,10 @@
 
 <!-- select2 -->
 <script src="<?= base_url() ?>assets/select2/dist/js/select2.min.js"></script>
+
+<!-- mask jquery -->
+<script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
+
 <script>
 	$(document).ready(function() {
 		$('#basic-datatables').DataTable({
@@ -400,6 +404,13 @@
 			}
 		});
 	});
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		// Format nomor HP.
+		$('.no_hp').mask('0000-0000-0000');
+		$('.nik').mask('0000000000000000');
+	})
 </script>
 </body>
 
