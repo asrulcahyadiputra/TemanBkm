@@ -90,8 +90,13 @@
 																	<span class="badge badge-danger"><i class="icon-close"></i></span>
 																<?php endif ?></td>
 															<td style="font-size: 11px;">
-																<a href="" class="text-warning" data-toggle="tooltip" data-placement="top" title="Edit Pengurus"><i class="fa fa-edit"></i></a>
-																<a href="" class="text-danger" data-toggle="tooltip" data-placement="top" title="Non Aktifkan Pengurus"><i class="icon-ban"></i></a>
+																<a href="<?= site_url('Master_pengurus/update/' . $p->id_pengurus) ?>" class="text-warning" data-toggle="tooltip" data-placement="top" title="Edit Pengurus"><i class="fa fa-edit"></i></a>
+																<?php if ($p->status  == 1) : ?>
+																	<a href="<?= site_url('Master_pengurus/ban/' . $p->id_pengurus . '/0') ?>" class="text-danger" data-toggle="tooltip" data-placement="top" title="Non Aktifkan Pengurus"><i class="icon-ban"></i></a>
+																<?php endif ?>
+																<?php if ($p->status  == 0) : ?>
+																	<a href="<?= site_url('Master_pengurus/ban/' . $p->id_pengurus . '/1') ?>" class="text-primary" data-toggle="tooltip" data-placement="top" title="Aktifkan Pengurus"><i class="icon-check"></i></a>
+																<?php endif ?>
 															</td>
 
 														</tr>
