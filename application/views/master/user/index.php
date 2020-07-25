@@ -45,6 +45,7 @@
 												<thead>
 													<tr>
 														<th>#</th>
+														<th>Foto</th>
 														<th>Nama User</th>
 														<th>Username</th>
 														<th>Role</th>
@@ -57,6 +58,11 @@
 													foreach ($user as $u) : ?>
 														<tr>
 															<td><?= $no++ ?></td>
+															<td>
+																<div class="avatar avatar-sm">
+																	<img src="<?= base_url('uploads/user/' . $u->foto) ?>" alt="..." class="avatar-img rounded-circle">
+																</div>
+															</td>
 															<td><?= $u->nama ?></td>
 															<td><?= $u->username ?></td>
 															<td>

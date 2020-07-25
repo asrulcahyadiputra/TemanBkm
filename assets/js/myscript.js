@@ -75,6 +75,15 @@ if (flashData) {
 				},
 			},
 		});
+	} else if (flashData == "warning7") {
+		swal("Oops... !", "Anggota Sudah Punya akun", {
+			icon: "error",
+			buttons: {
+				confirm: {
+					className: "btn btn-danger",
+				},
+			},
+		});
 	} else {
 		swal("Berhasil!", flashData, {
 			icon: "success",

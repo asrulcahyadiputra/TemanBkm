@@ -45,6 +45,10 @@ class Anggota extends CI_Controller
 		// $this->session->set_flashdata('sukses', 'Anggota Berhasil di Non Aktifkan');
 		// redirect('Anggota');
 	}
+	public function add_user($id)
+	{
+		$this->M_anggota->add_user($id);
+	}
 }
 
 /* End of file Anggota.php */

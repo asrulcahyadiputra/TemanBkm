@@ -60,6 +60,27 @@ class M_anggota extends CI_Model
 			->group_by('simpanan.id_anggota');
 		return $this->db->get()->result();
 	}
+	public function add_user($id)
+	{
+		$user = $this->db->get_where('user', ['id_anggota' => $id])->row_array();
+		$anggota = $this->db->get_where('anggota', ['id_anggota' => $id])->row_array();
+		if ($user) {
+			$this->session->set_flashdata('sukses', 'warning7');
+			redirect('Anggota');
+		} else {
+			$data = [
+				'id_anggota'	=> $id,
+				'nama'		=> $anggota['nama_anggota'],
+				'username'	=> $anggota['nik'],
+				'password'	=> password_hash('123456', PASSWORD_DEFAULT),
+				'role'		=> 6,
+				'foto'		=> 'default-user.png',
+			];
+			$this->db->insert('user', $data);
+			$this->session->set_flashdata('sukses', 'Akun Anggota Berhasil di Buat');
+			redirect('Anggota');
+		}
+	}
 }
 
 /* End of file M_anggota.php */

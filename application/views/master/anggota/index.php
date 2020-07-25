@@ -83,6 +83,7 @@
 																	</td>
 																	<td>
 																		<button data-toggle="tooltip" data-placement="top" title="Non Aktifkan Anggota" class="btn btn-danger btn-sm remove"><i class="icon-user-unfollow"></i></button>
+																		<a href="<?= site_url('Anggota/add_user/' . $at->id_anggota) ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Buat Akun"><i class="flaticon-add-user"></i></a>
 																	</td>
 																</tr>
 															<?php endforeach ?>
