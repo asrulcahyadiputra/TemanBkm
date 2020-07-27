@@ -3,6 +3,7 @@
 		<div class="page-inner py-3">
 			<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 				<div>
+					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('sukses') ?>"></div>
 					<h2 class="text-white pb-2 fw-bold">Dashboard</h2>
 					<h5 class="text-white op-7 mb-2">Sistem Informasi Pengelolaan BKM-Simpan Pinjam</h5>
 				</div>

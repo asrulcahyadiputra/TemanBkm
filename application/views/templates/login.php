@@ -15,7 +15,7 @@
 		<div class="forms-container">
 			<div class="signin-signup">
 				<div class="flash-data" data-flashdata="<?= $this->session->flashdata('sukses') ?>"></div>
-				<form action="#" method="POST" class="sign-in-form">
+				<form action="<?= site_url('Auth/validate') ?>" method="POST" class="sign-in-form">
 					<h2 class="title">Login</h2>
 					<div class="input-field">
 						<i class="fas fa-user"></i>
@@ -27,7 +27,6 @@
 					</div>
 					<input type="submit" value="Login" class="btn solid" />
 				</form>
-
 			</div>
 		</div>
 

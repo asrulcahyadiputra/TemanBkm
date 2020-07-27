@@ -84,6 +84,24 @@ if (flashData) {
 				},
 			},
 		});
+	} else if (flashData == "warning8") {
+		swal("Oops... !", "Username atau Password Salah", {
+			icon: "error",
+			buttons: {
+				confirm: {
+					className: "btn btn-danger",
+				},
+			},
+		});
+	} else if (flashData == "warning9") {
+		swal("Oops... !", "Akun Anda Sedang Di Lock / Banned", {
+			icon: "error",
+			buttons: {
+				confirm: {
+					className: "btn btn-danger",
+				},
+			},
+		});
 	} else {
 		swal("Berhasil!", flashData, {
 			icon: "success",
