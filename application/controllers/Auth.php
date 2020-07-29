@@ -20,51 +20,49 @@ class Auth extends CI_Controller
 		$password = $this->input->post('password', true);
 		$user  = $this->db->get_where('user', ['username' => $username])->row_array();
 		if ($user) {
-			if (password_verify($password, $user['password'])) {
-				if ($user['status'] == 1) {
-					if ($this->agent->is_browser()) {
-						$browser = $this->agent->browser() . '' . $this->agent->version();
-					} elseif ($this->agent->is_robot()) {
-						$browser = $this->agent->robot();
-					} elseif ($this->agent->is_mobile()) {
-						$browser = $this->agent->mobile();
-					} else {
-						$browser = "Undentified User Agent";
-					}
-					$ip = $this->input->ip_address();
-					$os = $this->agent->platform();
-					$log_user = [
-						'id_user'		=> $user['id_user'],
-						'ip'			=> $ip,
-						'browser'		=> $browser,
-						'os'			=> $os
-					];
-					$data = [
-						'id_user'		=> $user['id_user'],
-						'nama'		=> $user['nama'],
-						'foto'		=> $user['foto'],
-						'role'		=> $user['role'],
-						'xyz'		=> 1
-					];
-					$this->db->insert('log_login', $log_user);
-					$this->session->set_userdata($data);
-					//berhasil masuk
-					$this->session->set_flashdata('sukses', 'Selamat Datang, ' . $user['nama']);
-					redirect('Dashboard');
-				} else {
-					// akun user di block
-					$this->session->set_flashdata('sukses', 'warning9');
-					redirect('Auth');
-				}
+			$date = date('Y-m-d');
+			$log = $this->db->get_where('log_password', ['id_user' => $user['id_user'], 'date' => $date])->row_array();
+			if ($log['total'] >= 3) {
+				$this->load->view('errors/html/error_log');
 			} else {
-				// password salah
-				$date = date('Y-m-d');
-				$log = $this->db->get_where('log_password', ['id_user' => $user['id_user'], 'date' => $date])->row_array();
-				if ($log['total'] >= 3) {
-					// total password salah sehari maksimal 3 kali
-					$this->load->view('errors/html/error_log');
+				if (password_verify($password, $user['password'])) {
+					if ($user['status'] == 1) {
+						if ($this->agent->is_browser()) {
+							$browser = $this->agent->browser() . '' . $this->agent->version();
+						} elseif ($this->agent->is_robot()) {
+							$browser = $this->agent->robot();
+						} elseif ($this->agent->is_mobile()) {
+							$browser = $this->agent->mobile();
+						} else {
+							$browser = "Undentified User Agent";
+						}
+						$ip = $this->input->ip_address();
+						$os = $this->agent->platform();
+						$log_user = [
+							'id_user'		=> $user['id_user'],
+							'ip'			=> $ip,
+							'browser'		=> $browser,
+							'os'			=> $os
+						];
+						$data = [
+							'id_user'		=> $user['id_user'],
+							'nama'		=> $user['nama'],
+							'foto'		=> $user['foto'],
+							'role'		=> $user['role'],
+							'xyz'		=> 1
+						];
+						$this->db->insert('log_login', $log_user);
+						$this->session->set_userdata($data);
+						//berhasil masuk
+						$this->session->set_flashdata('sukses', 'Selamat Datang, ' . $user['nama']);
+						redirect('Dashboard');
+					} else {
+						// akun user di block
+						$this->session->set_flashdata('sukses', 'warning9');
+						redirect('Auth');
+					}
 				} else {
-					// password salah kurang dari 3
+					// password salah
 					if ($log) {
 						$log_password = [
 							'id_user' => $user['id_user'],

@@ -102,6 +102,15 @@ if (flashData) {
 				},
 			},
 		});
+	} else if (flashData == "warning10") {
+		swal("Oops... !", "Total Persentase SHU di atas 100 % ", {
+			icon: "error",
+			buttons: {
+				confirm: {
+					className: "btn btn-danger",
+				},
+			},
+		});
 	} else {
 		swal("Berhasil!", flashData, {
 			icon: "success",

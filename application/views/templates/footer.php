@@ -102,6 +102,21 @@
 				}
 			}
 		});
+		$('.custom-datatables').DataTable({
+			'searching': false,
+			'ordering': false,
+			'language': {
+				"lengthMenu": "Tampilkan _MENU_ Data per Halaman",
+				"zeroRecords": "--Data Tidak ditemukan--",
+				"info": "Halaman  _PAGE_ dari _PAGES_",
+				"infoEmpty": "Belum ada Data",
+				"infoFiltered": "(filtered from _MAX_ total records)",
+				'paginate': {
+					'previous': "Sebelumnya",
+					'next': "Selanjutnya",
+				}
+			}
+		});
 
 
 

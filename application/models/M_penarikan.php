@@ -79,7 +79,7 @@ class M_penarikan extends CI_Model
 					'ket'			=> 'cr'
 				];
 				$debet = [
-					'kode_akun'		=> '3105',
+					'kode_akun'		=> '2105',
 					'tgl_jurnal'		=> date('Y-m-d'),
 					'ref'			=> $this->id_simpanan(),
 					'nominal'			=> $nominal,

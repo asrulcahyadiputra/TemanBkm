@@ -174,7 +174,7 @@ class M_rekening extends CI_Model
 				'posisi_dr_cr'		=> 'dr'
 			];
 			$kredit = [
-				'kode_akun'		=> '3105',
+				'kode_akun'		=> '2105',
 				'tgl_jurnal'		=> date('Y-m-d'),
 				'ref'			=> $this->id_simpanan(),
 				'nominal'			=> $nominal,

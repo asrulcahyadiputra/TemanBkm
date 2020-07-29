@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://192.168.0.41/TemanBkm/';
+$config['base_url'] = 'http://192.168.0.29/TemanBkm/';
 
 /*
 |--------------------------------------------------------------------------
@@ -324,7 +324,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'asjdnaklsndiawenadksnaiskdnaksmdkszmxcoskxmo';
 
 /*
 |--------------------------------------------------------------------------
