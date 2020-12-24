@@ -1,0 +1,996 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.7
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:8889
+-- Generation Time: Dec 24, 2020 at 06:08 PM
+-- Server version: 5.7.32
+-- PHP Version: 7.4.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `bkm_2020`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `akses_menu`
+--
+
+CREATE TABLE `akses_menu` (
+  `id` int(11) NOT NULL,
+  `id_menu` int(11) NOT NULL,
+  `role` int(11) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `akses_menu`
+--
+
+INSERT INTO `akses_menu` (`id`, `id_menu`, `role`, `date_created`) VALUES
+(1, 1, 1, '2020-07-27 11:25:41'),
+(2, 1, 2, '2020-07-27 11:25:41'),
+(3, 1, 3, '2020-07-27 11:25:41'),
+(4, 1, 4, '2020-07-27 11:25:41'),
+(5, 1, 5, '2020-07-27 11:25:41'),
+(6, 1, 0, '2020-07-27 11:25:41'),
+(7, 2, 1, '2020-07-27 11:27:25'),
+(8, 2, 2, '2020-07-27 11:27:25'),
+(9, 3, 1, '2020-07-27 11:28:42'),
+(10, 3, 2, '2020-07-27 11:28:42'),
+(11, 4, 1, '2020-07-27 11:29:18'),
+(12, 4, 2, '2020-07-27 11:29:18'),
+(13, 5, 1, '2020-07-27 11:29:51'),
+(14, 5, 2, '2020-07-27 11:29:51'),
+(15, 6, 1, '2020-07-27 11:30:24'),
+(16, 6, 2, '2020-07-27 11:30:24'),
+(17, 7, 1, '2020-07-27 11:32:46'),
+(18, 7, 2, '2020-07-27 11:32:46'),
+(19, 7, 3, '2020-07-27 11:32:46'),
+(20, 7, 0, '2020-07-27 11:32:46'),
+(21, 8, 1, '2020-07-27 11:33:53'),
+(22, 8, 2, '2020-07-27 11:33:53'),
+(23, 8, 3, '2020-07-27 11:33:53'),
+(24, 8, 0, '2020-07-27 11:33:53'),
+(25, 9, 1, '2020-07-27 11:34:41'),
+(26, 9, 3, '2020-07-27 11:34:41'),
+(27, 10, 1, '2020-07-27 11:35:59'),
+(28, 10, 3, '2020-07-27 11:35:59'),
+(29, 10, 0, '2020-07-27 11:35:59'),
+(30, 11, 1, '2020-07-27 11:37:16'),
+(31, 11, 3, '2020-07-27 11:37:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `anggota`
+--
+
+CREATE TABLE `anggota` (
+  `id_anggota` varchar(50) NOT NULL,
+  `nama_anggota` varchar(30) NOT NULL,
+  `nik` varchar(17) NOT NULL,
+  `tempat_lahir` varchar(100) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `jenis_kelamin` varchar(50) NOT NULL,
+  `no_telp` varchar(13) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '0',
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `anggota`
+--
+
+INSERT INTO `anggota` (`id_anggota`, `nama_anggota`, `nik`, `tempat_lahir`, `tgl_lahir`, `jenis_kelamin`, `no_telp`, `email`, `status`, `date_created`) VALUES
+('AG-1595894400-0001', 'Lanto Daeng Pasewang', '8302091607990001', 'Bulukumba', '1987-07-16', 'Laki-Laki', '0892-3838-383', '', 1, '2020-07-29 03:10:43'),
+('AG-1595894400-0002', 'Sultan Alauddin', '8302091607990002', 'Bulukumba', '1982-02-15', 'Laki-Laki', '0892-3838-383', '', 1, '2020-07-29 03:17:34'),
+('AG-1595894400-0003', 'Djoko Handoko', '8302091607990003', 'Bulukumba', '1978-07-16', 'Laki-Laki', '0892-3838-383', '', 1, '2020-07-29 03:56:07'),
+('AG-1596585600-0004', 'Lanto Daeng Pasewang', '7302091607990002', 'Bulukumba', '1987-07-16', 'Laki-Laki', '0892-3838-381', '', 1, '2020-08-06 05:47:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coa`
+--
+
+CREATE TABLE `coa` (
+  `kode_akun` int(11) NOT NULL,
+  `header` int(11) NOT NULL,
+  `sub_header` int(11) NOT NULL,
+  `akun` varchar(100) NOT NULL,
+  `saldo_normal` varchar(5) NOT NULL,
+  `pos` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `coa`
+--
+
+INSERT INTO `coa` (`kode_akun`, `header`, `sub_header`, `akun`, `saldo_normal`, `pos`) VALUES
+(1, 0, 0, 'Aktiva', 'dr', 0),
+(2, 0, 0, 'Kewajiban', 'cr', 0),
+(3, 0, 0, 'Modal', 'cr', 0),
+(4, 0, 0, 'Pendapatan', 'cr', 0),
+(5, 0, 0, 'Beban-Beban', 'dr', 0),
+(11, 1, 0, 'Aktiva Lancar', 'dr', 0),
+(12, 1, 0, 'Aktiva Tetap', 'dr', 0),
+(21, 2, 0, 'Kewajiban Lancar', 'cr', 0),
+(22, 2, 0, 'Kewajiban Jangka Panjang', 'cr', 0),
+(31, 3, 0, 'Simpanan Pokok', 'cr', 0),
+(32, 3, 0, 'Simpanan Wajib', 'cr', 0),
+(33, 3, 0, 'Sisa Hasil Usaha', 'cr', 0),
+(34, 3, 0, 'Cadangan', 'cr', 0),
+(41, 4, 0, 'Pendapatan Operasional', 'cr', 0),
+(42, 4, 0, 'Pendapatan Komisi', 'cr', 0),
+(43, 4, 0, 'Pendapatan Lain-Lain', 'cr', 0),
+(51, 5, 0, 'Beban Bunga Bank', 'dr', 0),
+(52, 5, 0, 'Beban Gaji/Upah', 'dr', 0),
+(53, 5, 0, 'Beban RAT Tahun Buku', 'dr', 0),
+(54, 5, 0, 'Beban Administrasi dan Umum', 'dr', 0),
+(55, 5, 0, 'Beban Bunga', 'dr', 0),
+(1101, 1, 11, 'Kas', 'dr', 1),
+(1121, 1, 11, 'Bank Mandiri', 'dr', 2),
+(1122, 1, 11, 'Bank BNI', 'dr', 2),
+(1123, 1, 11, 'Bank BRI', 'dr', 2),
+(1131, 1, 11, 'Piutang', 'dr', 1),
+(1141, 1, 11, 'Penyisihan Piutang tak Tertagih', 'dr', 1),
+(1151, 1, 11, 'Pendapatan Jasa yang akan ditagih', 'dr', 1),
+(1201, 1, 12, 'Tanah', 'dr', 1),
+(1202, 1, 12, 'Gedung Kantor', 'dr', 1),
+(1203, 1, 12, 'Perlatan Kantor', 'dr', 1),
+(1204, 1, 12, 'Akumulasi Penyusutan Gedung', 'dr', 1),
+(1205, 1, 12, 'Akumulasi Penyusutan Perlatan', 'dr', 1),
+(2101, 2, 21, 'Dana Sosial', 'cr', 1),
+(2102, 2, 21, 'Dana Pendidikan', 'cr', 1),
+(2103, 2, 21, 'Dana Kesejahteraan Pegawai', 'cr', 1),
+(2104, 2, 21, 'Tabungan Idul Fitri', 'cr', 1),
+(2105, 2, 21, 'Simpanan Sukarela', 'cr', 1),
+(3101, 3, 31, 'Simpanan Pokok', 'cr', 1),
+(3102, 3, 32, 'Simpanan Wajib', 'cr', 1),
+(3103, 3, 33, 'Sisa Hasil Usaha', 'cr', 1),
+(3104, 3, 34, 'Cadangan', 'cr', 1),
+(4101, 4, 41, 'Pendapatan Operasional', 'cr', 1),
+(4102, 4, 42, 'Pendapatan Komisi', 'cr', 1),
+(4103, 4, 43, 'Pendapatan Lain-Lain', 'cr', 1),
+(4104, 3, 35, 'Simpanan Sukarela', 'cr', 1),
+(5101, 5, 51, 'Beban Bunga Bank Mandiri', 'dr', 2),
+(5102, 5, 51, 'Beban Bunga Bank BNI', 'dr', 2),
+(5103, 5, 51, 'Beban Bungan Bank BRI', 'dr', 1),
+(5104, 5, 52, 'Beban Gaji/upah Karyawan Tetap', 'dr', 1),
+(5105, 5, 52, 'Beban Gaji/upah Karyawan Kontrak', 'dr', 1),
+(5106, 5, 53, 'Beban RAT Tahun Buku', 'dr', 1),
+(5107, 5, 54, 'Biaya Listrik, air, dan telepon', 'dr', 1),
+(5108, 5, 54, 'Beban Transportasi', 'dr', 1),
+(5109, 5, 54, 'Beban Rapat', 'dr', 1),
+(5110, 5, 54, 'Beban Penghapusan Piutang', 'dr', 1),
+(5111, 5, 54, 'Tunjangan Hari Raya', 'dr', 1),
+(5112, 5, 54, 'Beban Pembinaan', 'dr', 1),
+(5113, 5, 54, 'Pajak Penghasilan (PPh)', 'dr', 1),
+(5114, 5, 55, 'Beban Bunga', 'dr', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_periode_wajib`
+--
+
+CREATE TABLE `detail_periode_wajib` (
+  `id` int(20) NOT NULL,
+  `id_periode` varchar(20) NOT NULL,
+  `tgl_periode` date NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_rekening`
+--
+
+CREATE TABLE `detail_rekening` (
+  `id_transaksi` int(100) NOT NULL,
+  `no_rekening` varchar(20) NOT NULL,
+  `tgl_setor` date DEFAULT NULL,
+  `nominal` float NOT NULL,
+  `saldo` float NOT NULL,
+  `ket` varchar(3) NOT NULL,
+  `level` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `detail_rekening`
+--
+
+INSERT INTO `detail_rekening` (`id_transaksi`, `no_rekening`, `tgl_setor`, `nominal`, `saldo`, `ket`, `level`) VALUES
+(1, '732001-1-000001', '2020-10-04', 200000, 200000, 'dr', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice`
+--
+
+CREATE TABLE `invoice` (
+  `id_invoice` varchar(20) NOT NULL,
+  `id_anggota` varchar(50) NOT NULL,
+  `id` int(20) NOT NULL,
+  `wajib` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `note` text,
+  `status` int(11) NOT NULL DEFAULT '0',
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jenis_simpanan`
+--
+
+CREATE TABLE `jenis_simpanan` (
+  `id_jenis` varchar(20) NOT NULL,
+  `nama_jenis` varchar(100) NOT NULL,
+  `nominal` int(11) NOT NULL,
+  `ket` int(11) NOT NULL DEFAULT '0',
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `jenis_simpanan`
+--
+
+INSERT INTO `jenis_simpanan` (`id_jenis`, `nama_jenis`, `nominal`, `ket`, `status`) VALUES
+('JS-0001', 'Simpanan Pokok', 150000, 0, 1),
+('JS-0002', 'Simpanan Wajib', 100000, 1, 1),
+('JS-0003', 'Simpanan Sukarela', 100000, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jurnal`
+--
+
+CREATE TABLE `jurnal` (
+  `urut` int(11) NOT NULL,
+  `tgl_jurnal` date NOT NULL,
+  `kode_akun` int(11) NOT NULL,
+  `ref` varchar(255) NOT NULL,
+  `nominal` float NOT NULL,
+  `posisi_dr_cr` varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `jurnal`
+--
+
+INSERT INTO `jurnal` (`urut`, `tgl_jurnal`, `kode_akun`, `ref`, `nominal`, `posisi_dr_cr`) VALUES
+(1, '2020-08-05', 1101, 'TRX-STR-1596585600-000001', 172000, 'dr'),
+(2, '2020-08-05', 3101, 'TRX-STR-1596585600-000001', 150000, 'cr'),
+(3, '2020-08-05', 4103, 'TRX-STR-1596585600-000001', 22000, 'cr'),
+(4, '2020-10-04', 1101, 'TRX-RKB-1601769600-000002', 200000, 'dr'),
+(5, '2020-10-04', 3105, 'TRX-RKB-1601769600-000002', 200000, 'cr');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kas_masuk`
+--
+
+CREATE TABLE `kas_masuk` (
+  `id_masuk` varchar(50) NOT NULL,
+  `tanggal` date NOT NULL,
+  `keterangan` text NOT NULL,
+  `nominal` int(11) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `komponen_biaya`
+--
+
+CREATE TABLE `komponen_biaya` (
+  `id_komponen` varchar(20) NOT NULL,
+  `komponen_biaya` varchar(100) NOT NULL,
+  `nominal` int(11) NOT NULL,
+  `tipe` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `komponen_biaya`
+--
+
+INSERT INTO `komponen_biaya` (`id_komponen`, `komponen_biaya`, `nominal`, `tipe`, `status`) VALUES
+('KM-0001', 'Biaya Adm. Pendaftaran', 15000, 3, 1),
+('KM-0002', 'Biaya Materai 6000', 7000, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log_login`
+--
+
+CREATE TABLE `log_login` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ip` varchar(30) NOT NULL,
+  `browser` varchar(100) NOT NULL,
+  `os` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log_password`
+--
+
+CREATE TABLE `log_password` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `total` int(11) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `master_jabatan`
+--
+
+CREATE TABLE `master_jabatan` (
+  `id_jabatan` varchar(20) NOT NULL,
+  `jabatan` varchar(100) NOT NULL,
+  `gaji_pokok` int(11) NOT NULL,
+  `thr` int(11) NOT NULL,
+  `tunjangan_lain` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `master_jabatan`
+--
+
+INSERT INTO `master_jabatan` (`id_jabatan`, `jabatan`, `gaji_pokok`, `thr`, `tunjangan_lain`, `status`, `date_created`) VALUES
+('JBT-0001', 'Ketua BKM', 1500000, 350000, 100000, 1, '2020-07-24 18:21:48'),
+('JBT-0002', 'Sekretaris', 1000000, 200000, 0, 1, '2020-07-24 18:25:49'),
+('JBT-0003', 'Bendahara', 1000000, 200000, 0, 1, '2020-07-24 18:26:11'),
+('JBT-0004', 'Staff Keuangan', 800000, 100000, 0, 1, '2020-07-24 18:29:59'),
+('JBT-0005', 'Staff Sekertariat', 800000, 100000, 0, 1, '2020-07-25 07:54:44');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `master_shu`
+--
+
+CREATE TABLE `master_shu` (
+  `id_shu` varchar(50) NOT NULL,
+  `komponen` varchar(150) NOT NULL,
+  `persentase` float NOT NULL,
+  `tahun` int(11) NOT NULL,
+  `keterangan` text NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `master_shu`
+--
+
+INSERT INTO `master_shu` (`id_shu`, `komponen`, `persentase`, `tahun`, `keterangan`, `date_created`) VALUES
+('MSH-0001', 'Cadangan BKM', 20, 2020, 'Berdasarkan Keputusan Bersama RAT tahun 2020', '2020-07-28 20:26:47'),
+('MSH-0002', 'Jasa Anggota', 30, 2020, 'Berdasarkan Keputusan Bersama RAT tahun 2020', '2020-07-28 20:28:24'),
+('MSH-0003', 'Jasa Modal', 20, 2020, 'Berdasarkan Keputusan Bersama RAT tahun 2020', '2020-07-28 20:29:44'),
+('MSH-0004', 'Dana Sosial', 5, 2020, 'Berdasarkan Keputusan Bersama RAT tahun 2020', '2020-07-29 04:04:58'),
+('MSH-0005', 'Dana Lingkungan', 5, 2020, 'Berdasarkan Keputusan Bersama RAT tahun 2020', '2020-07-29 04:05:20'),
+('MSH-0006', 'Dana Pendidikan', 5, 2020, 'Berdasarkan Keputusan Bersama RAT tahun 2020', '2020-07-29 04:05:35'),
+('MSH-0007', 'Pengurus/Pengawas', 7.5, 2020, 'Berdasarkan Keputusan Bersama RAT tahun 2020', '2020-07-29 04:06:45'),
+('MSH-0008', 'Cadangan Resiko', 7.5, 2020, 'Berdasarkan Keputusan Bersama RAT tahun 2020', '2020-07-29 04:07:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu`
+--
+
+CREATE TABLE `menu` (
+  `id_menu` int(11) NOT NULL,
+  `nama_menu` varchar(100) NOT NULL,
+  `urut` int(11) NOT NULL,
+  `icon` varchar(100) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `id` varchar(100) DEFAULT NULL,
+  `parent` int(11) NOT NULL,
+  `level` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`id_menu`, `nama_menu`, `urut`, `icon`, `url`, `id`, `parent`, `level`, `status`) VALUES
+(1, 'Dashboard', 1, 'fas fa-home', 'Dashboard', NULL, 0, 0, 1),
+(2, 'Profil BKM', 2, 'fas fa-address-card', 'Profile', NULL, 0, 0, 1),
+(3, 'Data Master', 3, 'fas fa-layer-group', 'base', NULL, 0, 1, 1),
+(4, 'Jabatan', 1, '-', 'Master_jabatan', 'base', 3, 2, 1),
+(5, 'Pengurus', 2, '-', 'Master_pengurus', 'base', 3, 2, 1),
+(6, 'Users', 3, '-', 'User', 'base', 3, 2, 1),
+(7, 'Simpanan', 4, 'fas fa-book', 'simpanan', NULL, 0, 1, 1),
+(8, 'Simpanan', 1, '-', 'Simpanan', 'simpanan', 4, 2, 1),
+(9, 'Jenis Simpanan', 2, '-', 'Jenis_simpanan', 'simpanan', 4, 2, 1),
+(10, 'Rekening', 7, 'fas fa-money-check', 'rekening', NULL, 0, 1, 1),
+(11, 'Rekening Nasabah', 1, '-', 'Rekening', 'rekening', 7, 2, 1),
+(12, 'Generate Bunga', 2, '-', 'Rekening/generate', 'rekening', 7, 2, 1),
+(13, 'Penyetoran', 3, '-', 'Penyetoran', 'rekening', 7, 2, 1),
+(14, 'Penarikan', 4, '-', 'Penarikan', 'rekening', 7, 2, 1),
+(15, 'Jenis Tabungan', 5, '-', 'Produk_simpanan', 'rekening', 7, 2, 1),
+(16, 'Anggota', 6, 'fas fa-users', 'anggota', NULL, 0, 1, 1),
+(17, 'Pendaftaran', 1, '-', 'Pendaftaran', 'anggota', 6, 2, 1),
+(18, 'Anggota', 2, '-', 'Anggota', 'anggota', 6, 2, 1),
+(19, 'Undian', 3, '-', 'Undian', 'anggota', 6, 2, 1),
+(20, 'Keuangan', 8, 'fas fa-coins', 'kas', NULL, 0, 1, 1),
+(21, 'Kas Masuk', 1, '-', 'Kas_masuk', 'kas', 8, 2, 1),
+(22, 'Kas Keluar', 2, '-', 'Kas_keluar', 'kas', 8, 2, 1),
+(23, 'Generate Invoice', 3, '-', 'Invoice', 'kas', 8, 2, 1),
+(24, 'Manajemen Aset', 9, 'fas fa-boxes', 'aset', NULL, 0, 1, 1),
+(25, 'Pengadaan', 1, '-', 'Pengadaan', 'aset', 9, 2, 1),
+(26, 'Daftar Aset', 2, '-', 'Master_aset', 'aset', 9, 2, 1),
+(27, 'Jenis Aset', 3, '-', 'Master_jenis_aset', 'aset', 9, 2, 1),
+(28, 'Akuntansi', 10, 'fas fa-file-invoice-dollar', 'akuntansi', NULL, 0, 1, 1),
+(29, 'Jurnal Umum', 1, '-', 'Jurnal', 'akuntansi', 10, 2, 1),
+(30, 'Buku Besar', 2, '-', 'Buku_besar', 'akuntansi', 10, 2, 1),
+(31, 'Charts Of Account', 5, '-', 'Coa', 'akuntansi', 10, 2, 1),
+(32, 'Komponen Biaya', 4, '-', 'Komponen_biaya', 'kas', 8, 2, 1),
+(33, 'Komponen SHU', 4, '-', 'Master_shu', 'akuntansi', 10, 2, 1),
+(34, 'Laporan SHU', 3, '-', 'Laporan_shu', 'akuntansi', 10, 2, 1),
+(35, 'Pinjaman', 5, 'fas fa-hand-holding-usd', 'pinjaman', NULL, 0, 1, 1),
+(36, 'Pinjaman Anggota', 1, '-', 'Pinjaman', 'pinjaman', 5, 2, 1),
+(37, 'Simulasi Kredit', 2, '-', 'Simulasi', 'pinjaman', 5, 2, 1),
+(38, 'Pengajuan Kredit', 3, '-', 'Pengajuan_kredit', 'pinjaman', 5, 2, 1),
+(39, 'Analisis Kemampuan Bayar', 4, '-', 'Analisis_kemampuan', 'pinjaman', 5, 2, 1),
+(40, 'Jenis Pinjaman', 5, '-', 'Jenis_pinjaman', 'pinjaman', 5, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pemetaan_kas`
+--
+
+CREATE TABLE `pemetaan_kas` (
+  `id` int(11) NOT NULL,
+  `index` varchar(255) NOT NULL,
+  `kode` varchar(50) NOT NULL,
+  `posisi` varchar(100) NOT NULL,
+  `jenis` varchar(100) DEFAULT NULL,
+  `kode_akun` int(11) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pendaftaran`
+--
+
+CREATE TABLE `pendaftaran` (
+  `kode_pendaftaran` varchar(7) NOT NULL,
+  `tgl_pendaftaran` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_anggota` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `pendaftaran`
+--
+
+INSERT INTO `pendaftaran` (`kode_pendaftaran`, `tgl_pendaftaran`, `id_anggota`) VALUES
+('DB2EZ6', '2020-08-05 22:47:58', 'AG-1596585600-0004');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengurus`
+--
+
+CREATE TABLE `pengurus` (
+  `id_pengurus` varchar(50) NOT NULL,
+  `nik` varchar(17) NOT NULL,
+  `nama_pengurus` varchar(100) NOT NULL,
+  `jenis_kelamin` int(2) NOT NULL,
+  `tempat_lahir` varchar(100) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `no_telp` varchar(13) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `alamat` text NOT NULL,
+  `id_jabatan` varchar(20) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `periode_bunga_tabungan`
+--
+
+CREATE TABLE `periode_bunga_tabungan` (
+  `id_periode` varchar(20) NOT NULL,
+  `periode` date NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '0',
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `periode_bunga_tabungan`
+--
+
+INSERT INTO `periode_bunga_tabungan` (`id_periode`, `periode`, `status`, `date_created`) VALUES
+('PRD-000001', '2020-10-31', 0, '2020-10-08 08:42:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `periode_iuran_wajib`
+--
+
+CREATE TABLE `periode_iuran_wajib` (
+  `id_periode` varchar(20) NOT NULL,
+  `periode` varchar(20) NOT NULL,
+  `total_hari` int(11) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profil_bkm`
+--
+
+CREATE TABLE `profil_bkm` (
+  `id_profil` int(11) NOT NULL,
+  `kode_bkm` int(11) NOT NULL,
+  `nama_bkm` varchar(256) NOT NULL,
+  `alamat` text NOT NULL,
+  `no_telp` varchar(13) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `website` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `profil_bkm`
+--
+
+INSERT INTO `profil_bkm` (`id_profil`, `kode_bkm`, `nama_bkm`, `alamat`, `no_telp`, `email`, `website`) VALUES
+(1, 732001, 'Badan Kesawadayaan Masyarakat (BKM) Sejahtera Selalu', 'Desa Suka Maju, Bandung, Jawa Barat', '081280055856', 'bkmsejahtera@gmail.com', 'www.sejahtera.bkm.co.id');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `p_simpanan`
+--
+
+CREATE TABLE `p_simpanan` (
+  `id_p_simpanan` varchar(20) NOT NULL,
+  `nama_simpanan` varchar(100) NOT NULL,
+  `awal_minimal` int(11) NOT NULL,
+  `setoran_minimal` int(11) NOT NULL,
+  `saldo_minimal` int(11) NOT NULL,
+  `biaya_adm` int(11) NOT NULL,
+  `biaya_tutup` int(11) NOT NULL,
+  `bunga` float NOT NULL,
+  `jangka` int(11) NOT NULL,
+  `penarikan` int(11) NOT NULL,
+  `setor` int(11) NOT NULL,
+  `level` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `p_simpanan`
+--
+
+INSERT INTO `p_simpanan` (`id_p_simpanan`, `nama_simpanan`, `awal_minimal`, `setoran_minimal`, `saldo_minimal`, `biaya_adm`, `biaya_tutup`, `bunga`, `jangka`, `penarikan`, `setor`, `level`) VALUES
+('PS-0001', 'Tabungan Sejahtera Bersama', 50000, 20000, 50000, 0, 10000, 12, 0, 1, 1, 0),
+('PS-0002', 'Tabungan Pendidikan ', 20000, 20000, 20000, 0, 0, 10, 5, 0, 1, 1),
+('PS-0003', 'SimpananKu', 100000, 50000, 100000, 2500, 10000, 15, 0, 1, 1, 0),
+('PS-0004', 'SImpanan Pro Life', 2000000, 500000, 100000, 7500, 15000, 25, 0, 1, 1, 0),
+('PS-0005', 'Usahaku', 20000, 20000, 50000, 1500, 5000, 10, 0, 1, 1, 0),
+('PS-0006', 'Tabungan Pemuda Sejahtera', 50000, 10000, 50000, 0, 2000, 6, 0, 1, 1, 0),
+('PS-0007', 'Deposito', 50000000, 0, 0, 15000, 15000, 20, 10, 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rekening`
+--
+
+CREATE TABLE `rekening` (
+  `no_rekening` varchar(20) NOT NULL,
+  `id_p_simpanan` varchar(20) NOT NULL,
+  `id_anggota` varchar(50) NOT NULL,
+  `tgl_pembuatan` date DEFAULT NULL,
+  `jatuh_tempo` date DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `rekening`
+--
+
+INSERT INTO `rekening` (`no_rekening`, `id_p_simpanan`, `id_anggota`, `tgl_pembuatan`, `jatuh_tempo`, `status`) VALUES
+('732001-1-000001', 'PS-0001', 'AG-1596585600-0004', '2020-10-04', '2025-10-04', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `simpanan`
+--
+
+CREATE TABLE `simpanan` (
+  `id_simpanan` varchar(50) NOT NULL,
+  `id_anggota` varchar(50) NOT NULL,
+  `tgl` date NOT NULL,
+  `id_jenis` varchar(20) NOT NULL,
+  `nominal` float NOT NULL,
+  `deskripsi` text,
+  `tunggakan` float NOT NULL DEFAULT '0',
+  `ket` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `simpanan`
+--
+
+INSERT INTO `simpanan` (`id_simpanan`, `id_anggota`, `tgl`, `id_jenis`, `nominal`, `deskripsi`, `tunggakan`, `ket`) VALUES
+('TRX-RKB-1601769600-000002', 'AG-1596585600-0004', '2020-10-04', 'JS-0003', 200000, NULL, 0, 'dr'),
+('TRX-STR-1596585600-000001', 'AG-1596585600-0004', '2020-08-05', 'JS-0001', 150000, NULL, 0, 'dr');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
+  `id_pengurus` varchar(50) DEFAULT NULL,
+  `id_anggota` varchar(50) DEFAULT NULL,
+  `nama` varchar(30) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `role` int(11) NOT NULL,
+  `foto` varchar(256) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `status_pass` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `id_pengurus`, `id_anggota`, `nama`, `username`, `password`, `role`, `foto`, `status`, `status_pass`) VALUES
+(1, NULL, 'AG-1596585600-0004', 'Lanto Daeng Pasewang', '7302091607990002', '$2y$10$XFIbDxyRH4CSi.Mww50QLOk8X1XwI21E/fRamB31Awf3w8sZZPfDq', 6, 'default-user.png', 1, 0);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `akses_menu`
+--
+ALTER TABLE `akses_menu`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_menu` (`id_menu`);
+
+--
+-- Indexes for table `anggota`
+--
+ALTER TABLE `anggota`
+  ADD PRIMARY KEY (`id_anggota`),
+  ADD UNIQUE KEY `nik` (`nik`);
+
+--
+-- Indexes for table `coa`
+--
+ALTER TABLE `coa`
+  ADD PRIMARY KEY (`kode_akun`);
+
+--
+-- Indexes for table `detail_periode_wajib`
+--
+ALTER TABLE `detail_periode_wajib`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_periode` (`id_periode`);
+
+--
+-- Indexes for table `detail_rekening`
+--
+ALTER TABLE `detail_rekening`
+  ADD PRIMARY KEY (`id_transaksi`),
+  ADD KEY `no_rekening` (`no_rekening`);
+
+--
+-- Indexes for table `invoice`
+--
+ALTER TABLE `invoice`
+  ADD PRIMARY KEY (`id_invoice`),
+  ADD KEY `id` (`id`),
+  ADD KEY `id_anggota` (`id_anggota`);
+
+--
+-- Indexes for table `jenis_simpanan`
+--
+ALTER TABLE `jenis_simpanan`
+  ADD PRIMARY KEY (`id_jenis`);
+
+--
+-- Indexes for table `jurnal`
+--
+ALTER TABLE `jurnal`
+  ADD PRIMARY KEY (`urut`);
+
+--
+-- Indexes for table `kas_masuk`
+--
+ALTER TABLE `kas_masuk`
+  ADD PRIMARY KEY (`id_masuk`);
+
+--
+-- Indexes for table `komponen_biaya`
+--
+ALTER TABLE `komponen_biaya`
+  ADD PRIMARY KEY (`id_komponen`);
+
+--
+-- Indexes for table `log_login`
+--
+ALTER TABLE `log_login`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `log_password`
+--
+ALTER TABLE `log_password`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `master_jabatan`
+--
+ALTER TABLE `master_jabatan`
+  ADD PRIMARY KEY (`id_jabatan`);
+
+--
+-- Indexes for table `master_shu`
+--
+ALTER TABLE `master_shu`
+  ADD PRIMARY KEY (`id_shu`);
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id_menu`);
+
+--
+-- Indexes for table `pemetaan_kas`
+--
+ALTER TABLE `pemetaan_kas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `kode_akun` (`kode_akun`);
+
+--
+-- Indexes for table `pendaftaran`
+--
+ALTER TABLE `pendaftaran`
+  ADD PRIMARY KEY (`kode_pendaftaran`),
+  ADD KEY `id_anggota` (`id_anggota`);
+
+--
+-- Indexes for table `pengurus`
+--
+ALTER TABLE `pengurus`
+  ADD PRIMARY KEY (`id_pengurus`),
+  ADD KEY `id_jabatan` (`id_jabatan`);
+
+--
+-- Indexes for table `periode_bunga_tabungan`
+--
+ALTER TABLE `periode_bunga_tabungan`
+  ADD PRIMARY KEY (`id_periode`);
+
+--
+-- Indexes for table `periode_iuran_wajib`
+--
+ALTER TABLE `periode_iuran_wajib`
+  ADD PRIMARY KEY (`id_periode`);
+
+--
+-- Indexes for table `profil_bkm`
+--
+ALTER TABLE `profil_bkm`
+  ADD PRIMARY KEY (`id_profil`);
+
+--
+-- Indexes for table `p_simpanan`
+--
+ALTER TABLE `p_simpanan`
+  ADD PRIMARY KEY (`id_p_simpanan`);
+
+--
+-- Indexes for table `rekening`
+--
+ALTER TABLE `rekening`
+  ADD PRIMARY KEY (`no_rekening`),
+  ADD KEY `id_anggota` (`id_anggota`),
+  ADD KEY `id_p_simpanan` (`id_p_simpanan`);
+
+--
+-- Indexes for table `simpanan`
+--
+ALTER TABLE `simpanan`
+  ADD PRIMARY KEY (`id_simpanan`),
+  ADD KEY `id_anggota` (`id_anggota`),
+  ADD KEY `id_jenis` (`id_jenis`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`),
+  ADD KEY `id_anggota` (`id_anggota`),
+  ADD KEY `id_pengurus` (`id_pengurus`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `akses_menu`
+--
+ALTER TABLE `akses_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `detail_periode_wajib`
+--
+ALTER TABLE `detail_periode_wajib`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `detail_rekening`
+--
+ALTER TABLE `detail_rekening`
+  MODIFY `id_transaksi` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `jurnal`
+--
+ALTER TABLE `jurnal`
+  MODIFY `urut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `log_login`
+--
+ALTER TABLE `log_login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `log_password`
+--
+ALTER TABLE `log_password`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `pemetaan_kas`
+--
+ALTER TABLE `pemetaan_kas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `profil_bkm`
+--
+ALTER TABLE `profil_bkm`
+  MODIFY `id_profil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `akses_menu`
+--
+ALTER TABLE `akses_menu`
+  ADD CONSTRAINT `akses_menu_ibfk_1` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`);
+
+--
+-- Constraints for table `detail_periode_wajib`
+--
+ALTER TABLE `detail_periode_wajib`
+  ADD CONSTRAINT `detail_periode_wajib_ibfk_1` FOREIGN KEY (`id_periode`) REFERENCES `periode_iuran_wajib` (`id_periode`);
+
+--
+-- Constraints for table `detail_rekening`
+--
+ALTER TABLE `detail_rekening`
+  ADD CONSTRAINT `detail_rekening_ibfk_1` FOREIGN KEY (`no_rekening`) REFERENCES `rekening` (`no_rekening`);
+
+--
+-- Constraints for table `invoice`
+--
+ALTER TABLE `invoice`
+  ADD CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`id`) REFERENCES `detail_periode_wajib` (`id`),
+  ADD CONSTRAINT `invoice_ibfk_2` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id_anggota`);
+
+--
+-- Constraints for table `log_login`
+--
+ALTER TABLE `log_login`
+  ADD CONSTRAINT `log_login_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Constraints for table `log_password`
+--
+ALTER TABLE `log_password`
+  ADD CONSTRAINT `log_password_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Constraints for table `pemetaan_kas`
+--
+ALTER TABLE `pemetaan_kas`
+  ADD CONSTRAINT `pemetaan_kas_ibfk_1` FOREIGN KEY (`kode_akun`) REFERENCES `coa` (`kode_akun`);
+
+--
+-- Constraints for table `pendaftaran`
+--
+ALTER TABLE `pendaftaran`
+  ADD CONSTRAINT `pendaftaran_ibfk_1` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id_anggota`);
+
+--
+-- Constraints for table `pengurus`
+--
+ALTER TABLE `pengurus`
+  ADD CONSTRAINT `pengurus_ibfk_1` FOREIGN KEY (`id_jabatan`) REFERENCES `master_jabatan` (`id_jabatan`);
+
+--
+-- Constraints for table `rekening`
+--
+ALTER TABLE `rekening`
+  ADD CONSTRAINT `rekening_ibfk_1` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id_anggota`),
+  ADD CONSTRAINT `rekening_ibfk_2` FOREIGN KEY (`id_p_simpanan`) REFERENCES `p_simpanan` (`id_p_simpanan`);
+
+--
+-- Constraints for table `simpanan`
+--
+ALTER TABLE `simpanan`
+  ADD CONSTRAINT `simpanan_ibfk_1` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id_anggota`),
+  ADD CONSTRAINT `simpanan_ibfk_2` FOREIGN KEY (`id_jenis`) REFERENCES `jenis_simpanan` (`id_jenis`);
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id_anggota`),
+  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`id_pengurus`) REFERENCES `pengurus` (`id_pengurus`);
